@@ -1,0 +1,78 @@
+=pod
+
+=encoding utf8
+
+=head2 Mojolicious Time Ago Plugin
+
+This is a simple plugin to provide to mojolicious a way to output DateTime 
+date objects more human readable.
+
+The plugin will give a "time_ago" helper method that when you pass a 
+DateTime it will return a text compatible with date like 'just now' and 
+'2 weeks ago'.
+
+=head3 Synopsis
+
+First you have to configure plugin at Mojolicious app startup
+
+    package MyApp;
+    use Mojo::Base 'Mojolicious';
+
+    sub startup {
+        my $self = shift
+
+        # add time_ago plugin here
+        $self->plugin('TimeAgo');
+
+        ...
+    }
+
+Now you can use time_ago helper in your Controller...
+
+    package MyApp::Controller::Home;
+    use Mojo::Base 'Mojolicious::Controller';
+
+    sub index {
+        my $self = shift;
+
+        # more code here
+        ...
+
+        return $self->render(
+            last_login => $self->time_ago( $user->last_access )
+        )
+    }
+
+... or you can use at template files
+
+    <h1><%= $post->title %></h1>
+    <small><%= $post->subtitle %></small>
+    <div><%= $post->content %></div>
+
+    <small><%= time_ago $post->created_at %></small>
+
+=head3 TODO
+
+
+=head2 Bugs?
+
+Create an issue here or send an e-mail to the module author.
+
+
+=head2 See Also
+
+Mojolicious::Plugin, DateTime, DateTimeX::Format::Ago
+
+
+=head2 Author
+
+Daniel Vinciguerra - daniel.vinciguerra@bivee.com.br
+
+2014 (c) Bivee. All rights reserved.
+
+This is free software; you can redistribute it and/or modify it 
+under the same terms as the Perl 5 programming language system 
+itself.
+
+=cut
+
