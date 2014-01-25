@@ -54,17 +54,17 @@ Now you can use time_ago helper in your Controller...
 =head3 TODO
 
 
-=head2 Bugs?
+=head3 Bug Report
 
 Create an issue here or send an e-mail to the module author.
 
 
-=head2 See Also
+=head3 See Also
 
 Mojolicious::Plugin, DateTime, DateTimeX::Format::Ago
 
 
-=head2 Author
+=head3 Author
 
 Daniel Vinciguerra - daniel.vinciguerra@bivee.com.br
 
