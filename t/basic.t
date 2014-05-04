@@ -21,11 +21,12 @@ get '/' => sub {
 
 get '/not-datetime' => sub {
     my $self = shift;
-    $self->render( text => $self->time_ago(bless({},'Foo')) );
+    $self->render( text => $self->time_ago(""));
 };
 
 get 'with-template' => sub{
-    $_[0]->stash( date => DateTime->now );
+    my $self = shift;
+    $self->render( date => DateTime->now );
 } => 'index';
 
 
@@ -54,6 +55,10 @@ $t->get_ok('/with-template')
 
 done_testing();
 
+
+##############################
+## template
+##############################
 __DATA__
 @@ index.html.ep
 <h3>Post title</h3>
