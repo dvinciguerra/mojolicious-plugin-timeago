@@ -1,0 +1,9 @@
+README.pod
+README
+lib/Mojolicious/Plugin/TimeAgo.pm
+MANIFEST
+ignore.txt
+Changes
+Makefile.PL
+t/basic.t
+t/00-load.t

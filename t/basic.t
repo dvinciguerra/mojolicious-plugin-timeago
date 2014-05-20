@@ -25,22 +25,6 @@ get '/not-datetime' => sub {
     $self->render( text => $self->time_ago(""));
 };
 
-get '/undef-datetime' => sub {
-    my $self = shift;
-    $self->render( text => $self->time_ago(undef) || '');
-};
-
-get '/invalid-datetime' => sub {
-    my $self = shift;
-    $self->render( text => $self->time_ago(localtime(time)));
-};
-
-get '/with-template' => sub{
-    my $self = shift;
-    $self->render( date => DateTime->now );
-} => 'index';
-
-
 ##############################
 ## test plugin
 ##############################
@@ -57,26 +41,5 @@ $t->get_ok('/not-datetime')
     ->status_is(200)
     ->content_is('');
 
-$t->get_ok('/undef-datetime')
-    ->status_is(200)
-    ->content_is('');
-
-$t->get_ok('/invalid-datetime')
-    ->status_is(200)
-    ->content_is('');
-
-$t->get_ok('/with-template')
-    ->status_is(200)
-    ->content_like(qr/just now/);
-
 done_testing();
 
-
-##############################
-## template
-##############################
-__DATA__
-@@ index.html.ep
-<h3>Post title</h3>
-<p>Lorem ipsum dolor sit amet</p>
-%= time_ago $date

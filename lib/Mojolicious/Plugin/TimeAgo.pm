@@ -1,6 +1,6 @@
 package Mojolicious::Plugin::TimeAgo;
 use Mojo::Base 'Mojolicious::Plugin';
-our $VERSION = '0.02';
+our $VERSION = 0.03;
 
 use DateTimeX::Format::Ago;
 
@@ -51,7 +51,7 @@ Mojolicious::Plugin::TimeAgo - DateTime TimeAgo Mojolicious Plugin
 
 =head1 VERSION
 
-version 0.2
+version 0.3
 
 
 =head1 SYNOPSIS
